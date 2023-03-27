@@ -40,13 +40,17 @@ public class Produto {
 
 	private String foto;
 	
-	@NotBlank(message="A classificação indicativa é obrigatoria")
-	@Size(min=3,max=18,message="A classificação indicativa deve ser entre 3 e 18 anos")
+	@NotNull(message="A classificação indicativa é obrigatoria")
+	//@Size(min=3,max=18,message="A classificação indicativa deve ser entre 3 e 18 anos")
 	private Integer idadeIndicada;
 
 	@ManyToOne
 	@JsonIgnoreProperties("produtos")
 	private Categoria categoria;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("produtos")
+	private Usuario usuario;
 
 	public Long getId() {
 		return id;
@@ -110,6 +114,14 @@ public class Produto {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 
